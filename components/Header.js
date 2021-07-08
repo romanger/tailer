@@ -2,10 +2,11 @@ import styles from '../styles/layouts/header.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import MainMenu from './MainMenu'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const classes = `${styles.header} ${isOpen ? 'opened' : ''}`
+  const classes = `${styles.header} ${isOpen ? styles.opened : ''}`
 
   const menuClickHandler = () => {
     setIsOpen((old) => {
@@ -22,14 +23,15 @@ const Header = () => {
           </a>
         </Link>
       </div>
-      <nav className={styles.menu}>
+      <div className={styles.menu}>
         <button className={styles.menu__button} onClick={menuClickHandler}>
           <svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line y1="1.5" x2="36" y2="1.5" stroke="white" strokeWidth="3"/>
             <line y1="16.5" x2="36" y2="16.5" stroke="white" strokeWidth="3"/>
           </svg>
         </button>
-      </nav>
+      </div>
+      {isOpen && <MainMenu/>}
     </header>
   )
 }
