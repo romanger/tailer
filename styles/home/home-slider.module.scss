@@ -1,0 +1,122 @@
+.homeSlider {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #212121;
+  background-image: url('/watch.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .titlePosition {
+    position: absolute;
+    padding-left: 86px;
+    padding-bottom: 86px;
+    left: 0;
+    bottom: 0;
+
+    &::before {
+      content: '';
+      width: 623px;
+      height: 3px;
+      background-color: #FFFFFF;
+      display: block;
+    }
+  }
+
+  .title {
+    font-family: Prata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 96px;
+    line-height: 96px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 33px;
+    margin-bottom: 68px;
+  }
+
+  .link {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.275em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .sliderNav {
+    position: absolute;
+    right: 35px;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    width: 35px;
+    align-items: center;
+  }
+
+  .slideNumber {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .scale {
+    height: 274px;
+    background-color: #606060;
+    width: 3px;
+    margin-bottom: 51px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .inner {
+      width: 3px;
+      background-color: #FFFFFF;
+      position: absolute;
+    }
+  }
+
+  .prev, .next {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .prev {
+    margin-bottom: 34px;
+  }
+
+  .next {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .next span {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 0.545em;
+    color: #FFFFFF;
+    display: block;
+    height: 104px;
+    transform: rotate(-90deg) translate(20px, 38px);
+
+  }
+}
