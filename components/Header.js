@@ -1,6 +1,7 @@
 import styles from '../styles/layouts/header.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import {motion} from 'framer-motion'
 import { useState } from 'react'
 import MainMenu from './MainMenu'
 
@@ -16,13 +17,17 @@ const Header = () => {
 
   return (
     <header className={classes}>
-      <div className={styles.logo}>
+      <motion.div className={styles.logo}
+                  initial={{y:-500, opacity:0}}
+                  animate={{y:0, opacity:1}}
+                  transition={{ duration: 1.3 , type:'spring', delay:1}}
+      >
         <Link href="/">
           <a>
             <Image src="/logo.svg" width={192} height={132}/>
           </a>
         </Link>
-      </div>
+      </motion.div>
       <div className={styles.menu}>
         <button className={styles.menu__button} onClick={menuClickHandler}>
           <svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">

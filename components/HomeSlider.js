@@ -1,5 +1,6 @@
 import styles from '../styles/home/home-slider.module.scss'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 const slides = [
@@ -36,7 +37,11 @@ const HomeSlider = () => {
   }
 
   return (
-    <div className={styles.homeSlider}>
+    <motion.div className={styles.homeSlider}
+      initial = {{opacity:0 , scale: 1.5}}
+                animate={{opacity:1 , scale:1}}
+                transition={{duration:1}}
+    >
       <div className={styles.titlePosition}>
         <h1 className={styles.title}>{slides[currentSlide].title}</h1>
         <Link href={slides[currentSlide].link}>
@@ -55,7 +60,11 @@ const HomeSlider = () => {
           </a>
         </Link>
       </div>
-      <div className={styles.sliderNav}>
+      <motion.div className={styles.sliderNav}
+                  initial={{ x: 500 }}
+                  animate={{ x: 0 }}
+                  transition={{ duration: 2 , type:'spring'}}
+      >
         <button className={styles.prev} onClick={prevClickHandler}>
           <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -65,20 +74,21 @@ const HomeSlider = () => {
         </button>
         <span className={styles.slideNumber}>{`0${currentSlide + 1}`}</span>
         <div className={styles.scale}>
-          <span className={styles.inner} style={{ height: (100 / slides.length) + '%', top: (100 / slides.length) * currentSlide + "%" }}></span>
+          <span className={styles.inner}
+                style={{ height: (100 / slides.length) + '%', top: (100 / slides.length) * currentSlide + '%' }}></span>
         </div>
 
-        {currentSlide === slides.length - 1 ? "" :
-        <button className={styles.next} onClick={nextClickHandler}>
-          <span>Next</span>
-          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10.9393 23.0607C11.5251 23.6464 12.4749 23.6464 13.0607 23.0607L22.6066 13.5147C23.1924 12.9289 23.1924 11.9792 22.6066 11.3934C22.0208 10.8076 21.0711 10.8076 20.4853 11.3934L12 19.8787L3.51472 11.3934C2.92893 10.8076 1.97918 10.8076 1.3934 11.3934C0.807611 11.9792 0.807612 12.9289 1.3934 13.5147L10.9393 23.0607ZM10.5 19.5L10.5 22L13.5 22L13.5 19.5L10.5 19.5Z"
-              fill="white"/>
-          </svg>
-        </button>}
-      </div>
-    </div>
+        {currentSlide === slides.length - 1 ? '' :
+          <button className={styles.next} onClick={nextClickHandler}>
+            <span>Next</span>
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.9393 23.0607C11.5251 23.6464 12.4749 23.6464 13.0607 23.0607L22.6066 13.5147C23.1924 12.9289 23.1924 11.9792 22.6066 11.3934C22.0208 10.8076 21.0711 10.8076 20.4853 11.3934L12 19.8787L3.51472 11.3934C2.92893 10.8076 1.97918 10.8076 1.3934 11.3934C0.807611 11.9792 0.807612 12.9289 1.3934 13.5147L10.9393 23.0607ZM10.5 19.5L10.5 22L13.5 22L13.5 19.5L10.5 19.5Z"
+                fill="white"/>
+            </svg>
+          </button>}
+      </motion.div>
+    </motion.div>
   )
 }
 
